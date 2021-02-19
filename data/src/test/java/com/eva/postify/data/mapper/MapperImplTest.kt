@@ -12,4 +12,9 @@ class MapperImplTest {
         assertEquals(TestData.listOfPosts, mapper.mapPosts(TestData.listOfPostModels))
     }
 
+    @Test
+    fun `test details model mapping`() {
+        assertEquals(TestData.postDetails, mapper.mapDetails(TestData.postDetailsModel))
+    }
+
 }
