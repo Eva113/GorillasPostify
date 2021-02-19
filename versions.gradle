@@ -1,0 +1,7 @@
+ext {
+    kotlin_version = "1.4.30"
+    koin_version = '2.2.2'
+    rxjava_version = "3.0.0"
+    apollo_version = "2.5.3"
+    junit_version = "4.13.2"
+}
