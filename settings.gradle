@@ -1,3 +1,4 @@
+include ':feature_list'
 include ':data'
 include ':app'
 rootProject.name = "GorillasPostify"
