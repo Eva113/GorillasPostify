@@ -14,12 +14,15 @@ import com.eva.postify.feature_list.presentation.viewmodel.PostsViewModel
 import com.eva.postify.feature_list.presentation.viewmodel.PostsViewModel.PostsAction.None
 import com.eva.postify.feature_list.presentation.viewmodel.PostsViewModel.PostsAction.OpenDetailsAction
 import com.eva.postify.feature_list.presentation.viewmodel.PostsViewModel.PostsState.*
+import com.eva.postify.navigator.Navigator
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PostsFragment : Fragment() {
 
     private val viewModel: PostsViewModel by viewModel()
+    private val navigator: Navigator by inject()
 
     private lateinit var binding: FragmentPostsBinding
     private lateinit var adapter: PostsAdapter
@@ -72,7 +75,7 @@ class PostsFragment : Fragment() {
     }
 
     private fun openDetailsFragment(post: Post) {
-        //TODO
+        navigator.navigateTo(requireActivity(), Navigator.Destination.PostDetails(post.id))
     }
 
     private fun showError(error: Throwable) {

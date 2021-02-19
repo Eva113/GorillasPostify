@@ -1,3 +1,4 @@
+include ':navigator'
 include ':feature_details'
 include ':feature_list'
 include ':data'

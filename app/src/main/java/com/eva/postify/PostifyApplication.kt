@@ -13,7 +13,8 @@ class PostifyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         val koin: KoinApplication =
-            KoinAndroidApplication.create(this).modules(dataModule, postsModule, detailsModule)
+            KoinAndroidApplication.create(this)
+                .modules(dataModule, postsModule, detailsModule, appModule)
         startKoin(koinApplication = koin)
     }
 }

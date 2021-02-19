@@ -9,4 +9,5 @@ ext {
     mockito_kotlin = "2.2.0"
     lifecycle_version = "2.3.0"
     core_testing = "2.1.0"
+    nav_version = "2.3.3"
 }
