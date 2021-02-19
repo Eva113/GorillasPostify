@@ -8,4 +8,5 @@ ext {
     mockito_inline = "3.7.7"
     mockito_kotlin = "2.2.0"
     lifecycle_version = "2.3.0"
+    core_testing = "2.1.0"
 }

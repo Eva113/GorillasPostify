@@ -57,4 +57,11 @@ dependencies {
     //Rx
     implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
     implementation "io.reactivex.rxjava3:rxandroid:$rxjava_version"
+
+    //Testing
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin"
+    testImplementation "org.mockito:mockito-inline:$mockito_inline"
+    testImplementation "androidx.arch.core:core-testing:$core_testing"
+
 }
