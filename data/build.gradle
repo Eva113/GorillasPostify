@@ -43,8 +43,13 @@ dependencies {
     implementation "com.apollographql.apollo:apollo-runtime:$apollo_version"
     implementation "com.apollographql.apollo:apollo-rx3-support:$apollo_version"
 
+    // Koin
+    implementation "org.koin:koin-core:$koin_version"
+
     //Testing
     testImplementation "junit:junit:$junit_version"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin"
     testImplementation "org.mockito:mockito-inline:$mockito_inline"
+
+
 }
