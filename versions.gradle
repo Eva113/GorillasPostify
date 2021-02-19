@@ -4,4 +4,6 @@ ext {
     rxjava_version = "3.0.0"
     apollo_version = "2.5.3"
     junit_version = "4.13.2"
+    mockito_inline = "3.7.7"
+    mockito_kotlin = "2.2.0"
 }
