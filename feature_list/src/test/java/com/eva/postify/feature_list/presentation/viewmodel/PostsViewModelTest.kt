@@ -98,4 +98,22 @@ internal class PostsViewModelTest {
 
     }
 
+    @Test
+    fun `test all data received scenario`() {
+        whenever(useCase.fetchPosts(0)).thenReturn(Observable.just(TestData.listOfPosts))
+        whenever(useCase.fetchPosts(1)).thenReturn(Observable.just(emptyList()))
+        viewModel.postsState.observeForever(state)
+
+        viewModel.onViewReady()
+        state.inOrder {
+            verify().onChanged(LoadingState)
+            verify(state).onChanged(SuccessState(0, TestData.listOfPosts))
+        }
+        viewModel.onBottomReached()
+        state.inOrder {
+            verify().onChanged(LoadingState)
+            verify(state).onChanged(SuccessState(1, TestData.listOfPosts, true))
+        }
+    }
+
 }
