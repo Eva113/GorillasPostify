@@ -23,7 +23,12 @@ internal class PostsViewModel(private val domain: PostsFetcherUseCase) : ViewMod
         get() = mutablePostsAction
 
     sealed class PostsState {
-        data class SuccessState(val currentPage: Int, val data: List<Post>) : PostsState()
+        data class SuccessState(
+            val currentPage: Int,
+            val data: List<Post>,
+            val allDataReceived: Boolean = false
+        ) : PostsState()
+
         object LoadingState : PostsState()
         data class ErrorState(val error: Throwable) : PostsState()
     }
@@ -47,7 +52,9 @@ internal class PostsViewModel(private val domain: PostsFetcherUseCase) : ViewMod
     fun onBottomReached() {
         val currentState = mutablePostsState.value
         if (currentState is PostsState.SuccessState) {
-            fetchPosts(currentState.currentPage + 1, currentState.data)
+            if (!currentState.allDataReceived) {
+                fetchPosts(currentState.currentPage + 1, currentState.data)
+            }
         } else {
             fetchPosts(0)
         }
@@ -63,7 +70,7 @@ internal class PostsViewModel(private val domain: PostsFetcherUseCase) : ViewMod
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map<PostsState> {
-                PostsState.SuccessState(page, previousList + it)
+                PostsState.SuccessState(page, previousList + it, it.isEmpty())
             }
             .onErrorReturn(PostsState::ErrorState)
             .subscribe(mutablePostsState::setValue))
